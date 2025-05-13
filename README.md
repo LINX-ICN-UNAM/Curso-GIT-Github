@@ -264,9 +264,25 @@ A partir de este punto se aconseja instalar WSL si estás en Windows para ejecut
 
 
 
-##Establecer conexión con GitHub
+## Creando directorio para los datos de conexión
 
-Para conectar el repositorio local con este repositorio de GitHub, usaremos la conexión mediante SSH, para lo cual necesitamos una clave RSA. Primero, en el directorio de usuario de tu computadora (`~` o `/home/you_user` en Linux, y `C:\Users\Spartan PC` en la PC Windows del laboratorio) crea una nueva carpeta <b>~/.ssh</b>, y abre la terminal dentro de ella. Ejecuta el siguiente comando para generar una llave RSA:
+Para conectar el repositorio local con un repositorio de GitHub, usaremos la conexión SSH, para lo cual necesitamos una clave RSA. Primero, en el directorio home de WSL de tu usuario en tu computadora (`~` o `/home/you_user` en Linux, la misma ruta en WSL Windows) crea una nueva carpeta <b>~/.ssh</b>, y abre la terminal dentro de ella. Puedes hacerlo con los siguientes comandos:
+
+```bash
+#Cambiar al home de tu usuario
+cd ~
+#Crear directorio
+mkdir .ssh
+#Entrar al directorio
+cd .ssh
+```
+
+Es importante usar la ruta `~` del WSL en vez de tu carpeta de usuario personal en Windows (comunmente `C:\Users\your_user`) pues sólo puedes gestionar permisos con comandos de Unix dentro de los directorios de WSL, no en los nativos de Windows.
+
+
+## Creación de la llave RSA
+
+Ejecuta el siguiente comando para generar una llave RSA:
 
 ```bash
 ssh-keygen -N "passphrase"
@@ -274,11 +290,15 @@ ssh-keygen -N "passphrase"
 
 El argumento adicional `-N "passphrase"` es opcional y por tanto se puede omitir, sirve para crear la llave usando una frase o palabra secreta (puedes usar la que quieras en vez de `"passphrase"`) como semilla generadora, pero la llave puede crearse sin usar una palabra secreta. Por mayor seguridad, se recomienda usar la passphrase, de este modo, las futuras conexiones la pedirán siempre que se haga una consulta con GitHub, sirviendo como una contraseña.
 
-Al ejecutar el comando, pedirá que se ingrese un nombre para el archivo de la clave, puedes poner el que sea, por ejemplo, `my_key1`, y dicha clave se guardará en la carpeta <b>.ssh</b> donde estás ejecutando el comando. Si vas a la carpeta, verás que se han generado dos archivos, `my_key1` (sin extensión, pero puede abrirse con cualquier editor de texto plano como Bloc de Notas), el archivo de clave privada, y que por tanto no debe compartirse; y `my_key1.pub`, el archivo con la clave pública de cifrado.
+Al ejecutar el comando, pedirá que se ingrese un nombre para el archivo de la clave, puedes poner el que sea, por ejemplo, `my_key1`, y dicha clave se guardará en la carpeta <b>.ssh</b> donde estás ejecutando el comando. Si vas a la carpeta, verás que se han generado dos archivos, `my_key1` (sin extensión, pero puede abrirse con cualquier editor de texto plano como Bloc de Notas), el archivo de clave privada, y que por tanto no debe compartirse; y `my_key1.pub`, el archivo con la clave pública de cifrado. También puedes comprobar esto listando los archivos del directorio actual:
 
-Ahora, debes abrir este repositorio en GitHub, ya sea desde la cuenta de LINX, o desde tu cuenta personal una vez que el dueño del repositorio (la cuenta de LINX) te haya dado los permisos para editarlo. Dentro del repositorio, ve a `Settings`, y luego en el menú del lado izquierdo ve a `Deploy Keys`. Dale a `Add deploy key`, y en el recuadro `Key` pega la clave que aparece dentro del archivo de llave pública `my_key1.pub` (puedes abrir el archivo con el Bloc de Notas, seleccionar todo `Ctrl+A` y luego copiar `Ctrl+C`). Bajo ninguna circunstancia debes pegar la clave privada que aparece en el archivo sin extensión `my_key1`. Finalmente, agrega algún título alusivo en el recuadro `Title` en GitHub y dale a guardar la llave.
+```bash
+ls -a
+```
 
-Los siguientes pasos se ejecutan completamente desde tu equipo. Dentro de la carpeta <b>.ssh</b> debes crear un archivo llamado `config`, el cual abrimos con Bloc de Notas (o equivalentes en Linux), y agregamos lo siguiente:
+## Configurando el Host
+
+Dentro de la carpeta <b>.ssh</b> (todavía) debes crear un archivo llamado `config`, el cual abrimos con Bloc de Notas (o equivalentes en Linux) o también con Code, y agregamos lo siguiente:
 
 ```text
 #Primer host
@@ -327,6 +347,8 @@ El paso anterior aplica tanto en Windows como en Linux, y a partir de aquí los 
 ```bash
 chmod 600 my_key1
 ```
+
+Ahora, debes abrir este repositorio en GitHub, ya sea desde la cuenta de LINX, o desde tu cuenta personal una vez que el dueño del repositorio (la cuenta de LINX) te haya dado los permisos para editarlo. Dentro del repositorio, ve a `Settings`, y luego en el menú del lado izquierdo ve a `Deploy Keys`. Dale a `Add deploy key`, y en el recuadro `Key` pega la clave que aparece dentro del archivo de llave pública `my_key1.pub` (puedes abrir el archivo con el Bloc de Notas, seleccionar todo `Ctrl+A` y luego copiar `Ctrl+C`). Bajo ninguna circunstancia debes pegar la clave privada que aparece en el archivo sin extensión `my_key1`. Finalmente, agrega algún título alusivo en el recuadro `Title` en GitHub y dale a guardar la llave.
 
 Con las claves (pública y privada) y el archivo `config` en la carpeta correcta `~/.ssh`, y los permisos adecuados para la llave privada, ya se puede iniciar sesión mediane SSH:
 
