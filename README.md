@@ -324,7 +324,7 @@ En donde puedes cambiar "github-host1" por cualquier nombre que quieras, pero se
 
 ## Conexión de más de un usuario en el mismo equipo/PC (opcional)
 
-Si se requiriera añadir más usuarios que se conecten ya sea a éste o a otros repositorios GitHub, se pueden copiar las líneas anteriores para cada usuario y añadirlas al archivo `config`, siempre y cuando los nombres del `Host` sean distintos para cada uno. Además, respeta la identación de cada Host de la lista. Un ejemplo de `config` para dos usuarios sería el siguiente:
+Si se requiriera conectar más usuarios ya sea a éste o a otros repositorios GitHub, se pueden copiar las líneas anteriores para cada usuario y añadirlas al archivo `config`, siempre y cuando los nombres del `Host` sean distintos para cada uno. Además, respeta la identación de cada Host de la lista. Un ejemplo de `config` para dos usuarios sería el siguiente:
 
 ```text
 #Primer host (para el primer usuario)
@@ -374,7 +374,7 @@ Y el programa solicitará al usuario ingresar su passphrase para `my_key2`.
 
 ## Enlazando un repositorio a un Host
 
-Los pasos anteriores sólo sirven para establecer la conexión desde el PC local a GitHub, pero ahora se debe enlazar el repositorio local con algún host en `config` (por ejemplo, `github-host1`). Para ello, se abre la carpeta oculta `.git` del repositorio local (esta carpeta se crea automáticamente al ejecutar `git init`), y luego se abre el archivo `config` de ese Git (no confundir con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto:
+Los pasos anteriores sólo sirven para establecer la conexión desde el PC local a GitHub, pero ahora se debe enlazar el repositorio local con algún host en `config` (por ejemplo, `github-host1`). Para ello, se abre la carpeta oculta `.git` del repositorio local (esta carpeta se crea automáticamente al ejecutar `git init`), y luego se abre el archivo `config` de ese Git (no confundir con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto, y edítala para que se vea como sigue:
 
 ```text
 [remote "origin"]
@@ -382,7 +382,7 @@ Los pasos anteriores sólo sirven para establecer la conexión desde el PC local
 	fetch = +refs/heads/*:refs/remotes/origin/*
 ```
 
-En la línea de `url` se debe cambiar el `github-host1` por el nombre que asignaste al Host en SSH, y `your_user/your_repo.git` es el nombre del usuario propietario en GitHub seguido del nombre del repositorio donde estás trabajando. En el caso de este repositorio, debe usarse `LINX-ICN-UNAM/GroundStation.git`. Tras esto, cualquier push que se haga mediante Git será enviado a GitHub mediante el host personalizado `github-host1` creado en el paso anterior, el cual ya tiene asignada la misma llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys. Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta:
+En la línea de `url` se debe cambiar el `github-host1` por el nombre que asignaste a tu Host en SSH, y `your_user/your_repo.git` es el nombre del usuario propietario en GitHub seguido del nombre del repositorio donde estás trabajando. En el caso de este repositorio, debe usarse `LINX-ICN-UNAM/GroundStation.git`. Tras esto, cualquier push que se haga mediante Git será enviado a GitHub mediante el host personalizado `github-host1` creado en el paso anterior, el cual ya tiene asignada la misma llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys. Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta:
 
 ```bash
 git push -u -f origin main
