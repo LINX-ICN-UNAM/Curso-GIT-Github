@@ -386,7 +386,24 @@ Los pasos anteriores sólo sirven para establecer la conexión desde el PC local
 	fetch = +refs/heads/*:refs/remotes/origin/*
 ```
 
-En la línea de `url` se debe cambiar el `github-host1` por el nombre que asignaste a tu Host en SSH, y `your_user/your_repo.git` es el nombre del usuario propietario en GitHub seguido del nombre del repositorio donde estás trabajando. Tras esto, cualquier push que se haga mediante Git será enviado a GitHub mediante el host personalizado `github-host1` creado previamente, el cual ya tiene asignada la llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys. Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta:
+En la línea de `url` se debe cambiar el `github-host1` por el nombre que asignaste a tu Host en SSH, y `your_user/your_repo.git` es el nombre del usuario propietario en GitHub seguido del nombre del repositorio donde estás trabajando. Tras esto, el remoto `origin` ha sido enlazado al host personalizado `github-host1` creado previamente, el cual ya tiene asignada la llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys.
+
+### Más de un repo remoto (opcional)
+
+Si se requiriera enlazar tu repositorio local a más de un repositorio remoto, primero, se debe agregar otro remoto (ejemplo, `remoto2`), y en el archivo `config` de Git (no el de `.ssh`) se buscan las líneas de configuración de ese remoto, y se editan como en el paso anterior:
+
+```text
+[remote "remoto2"]
+	url = github-host2:other_user/other_repo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+```
+
+En donde `github-host2` se debió configurar como se explicó previamente, creando su propia clave RSA, la cual debe ser compartida en el Deploy Keys del otro repositorio `other_user/other_repo.git`.
+
+
+## Haciendo push
+
+Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta:
 
 ```bash
 git push -u -f origin main
@@ -398,4 +415,4 @@ Si creaste la llave RSA con una passphrase, cada vez que hagas push se te pedir�
 git push
 ```
 
-Pero aún así se pedirá la passphrase cada que hagas push.
+Pero aún así se pedirá la passphrase cada que hagas push. Si requirieras mandar tus avances a otro remoto, ejecuta el push completo pero usando `remoto2` en vez de `origin`. Y de nuevo, los posteriores push se harán al `remoto2` sin indicarlo explícitamente, a menos que ejecutes nuevamente el comando completo cambiando a otro remoto.
