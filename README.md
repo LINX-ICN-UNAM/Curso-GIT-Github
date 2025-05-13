@@ -214,7 +214,7 @@ git status
 ![image](https://github.com/user-attachments/assets/20d73e72-d9bb-4c6e-849c-ea30291aeae3)  
 Podremos darnos cuenta que ya está en verde, esto significa que ya el stage ya lo tomó en cuenta pero aun es necesario hacer commit.
 
-Tambien se pueden añadir todos los archivos del directorio actual al staging area usando asterisco:
+También se pueden añadir todos los archivos del directorio actual al staging area usando asterisco:
 
 ```bash
 #Inicializa el repositorio local Git
@@ -258,15 +258,13 @@ Al revisar de nuva cuenta con [git status](#git-status) podremos ver lo siguient
 
 ---
 
-# Configuración de Git y GitHub
+# Conexión de Git y GitHub
 
-## Instalación de Git
-
-Primero debes instalar Git en tu equipo, nos enfocaremos en 2 SOs: Windows y Linux. La computadora del laboratorio usa Windows 11, a la cual se le ha instalado WSL para ejecutar comandos de Ubuntu en terminal. Por tanto, la gran parte de los pasos es la misma en Linux (distribuciones basadas en Debian como Ubuntu o Mint), y Windows con WSL. Se aconseja el uso de la terminal en aambos casos, cuidando que la terminal en Windows sea la de WSL Ubuntu y no el Powershell nativo de Windows.
+A partir de este punto se aconseja instalar WSL si estás en Windows para ejecutar comandos de Ubuntu en terminal. Por tanto, la gran parte de los pasos es la misma en Linux (distribuciones basadas en Debian como Ubuntu o Mint), y Windows con WSL. En ambos casos se usará la terminal, cuidando que la terminal en Windows sea la de WSL Ubuntu y no el Powershell nativo de Windows.
 
 
 
-<h2>Establecer conexión con GitHub</h2>
+##Establecer conexión con GitHub
 
 Para conectar el repositorio local con este repositorio de GitHub, usaremos la conexión mediante SSH, para lo cual necesitamos una clave RSA. Primero, en el directorio de usuario de tu computadora (`~` o `/home/you_user` en Linux, y `C:\Users\Spartan PC` en la PC Windows del laboratorio) crea una nueva carpeta <b>~/.ssh</b>, y abre la terminal dentro de ella. Ejecuta el siguiente comando para generar una llave RSA:
 
