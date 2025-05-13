@@ -264,7 +264,7 @@ A partir de este punto se aconseja instalar WSL si estás en Windows para ejecut
 
 
 
-## Creando directorio para los datos de conexión
+## Creando un directorio para SSH
 
 Para conectar el repositorio local con un repositorio de GitHub, usaremos la conexión SSH, para lo cual necesitamos una clave RSA. Primero, en el directorio home de WSL de tu usuario en tu computadora (`~` o `/home/you_user` en Linux, la misma ruta en WSL Windows) crea una nueva carpeta <b>~/.ssh</b>, y abre la terminal dentro de ella. Puedes hacerlo con los siguientes comandos:
 
@@ -298,7 +298,19 @@ ls -a
 
 ## Configurando el Host
 
-Dentro de la carpeta <b>.ssh</b> (todavía) debes crear un archivo llamado `config`, el cual abrimos con Bloc de Notas (o equivalentes en Linux) o también con Code, y agregamos lo siguiente:
+Dentro de la carpeta <b>.ssh</b> (todavía) debes crear un archivo llamado `config`:
+
+```bash
+touch config
+```
+
+el cual podemos abrir con Bloc de Notas (o equivalentes en Linux), o también con VS Code:
+
+```bash
+code config
+```
+
+y agregamos lo siguiente:
 
 ```text
 #Primer host
@@ -308,7 +320,11 @@ Host github-host1
   IdentityFile ~/.ssh/my_key1
 ```
 
-En donde puedes cambiar "github-host1" por cualquier nombre que quieras, pero se recomienda uno alusivo al repositorio (éste) y usuario (tú) para distinguirlo de cualquier otra conexión SSH, o de cualquier conexión a otro repositorio GitHub por parte de otros usuarios en el equipo. De igual modo, en la línea de `IdentityFile` debes cambiar `my_key1` por el nombre de archivo que le pusiste a tu clave privada. Si se requiriera añadir más usuarios que se conecten ya sea a éste o a otros repositorios GitHub, se pueden copiar las líneas anteriores por cada usuario y añadirlas al archivo `config`, siempre y cuando los nombres del `Host` sean distintos para cada uno. Un ejemplo de `config` para dos usuarios sería el siguiente:
+En donde puedes cambiar "github-host1" por cualquier nombre que quieras, pero se recomienda uno alusivo al repositorio y usuario (tú) para distinguirlo de cualquier otra conexión a SSH o a GitHub por parte de otros usuarios en el equipo. De igual modo, en la línea de `IdentityFile` debes cambiar `my_key1` por el nombre de archivo que le pusiste a tu clave privada.
+
+## Conexión de más de un usuario en el mismo equipo/PC (opcional)
+
+Si se requiriera añadir más usuarios que se conecten ya sea a éste o a otros repositorios GitHub, se pueden copiar las líneas anteriores para cada usuario y añadirlas al archivo `config`, siempre y cuando los nombres del `Host` sean distintos para cada uno. Además, respeta la identación de cada Host de la lista. Un ejemplo de `config` para dos usuarios sería el siguiente:
 
 ```text
 #Primer host (para el primer usuario)
@@ -324,42 +340,39 @@ Host github-host2
   IdentityFile ~/.ssh/my_key2
 ```
 
-Ahora, hay un paso extra en Windows. Dado que el entorno simulado de Ubuntu WSL no puede cambiar los permisos de acceso de los documentos de Windows, debes copiar los archivos de la carpeta <b>.ssh</b> (que en Windows está ubicada en `C:\Users\Tu usuario\.ssh`) a una carpeta dentro del sistema de archivos de Ubuntu WSL, la carpeta `~/.ssh`. Para ello, basta con abrir la terminal dentro del <b>.ssh</b> original del sistema de archivos de Windows y ejecutar:
+## Cambio de permisos
 
-```bash
-cp * ~/.ssh
-```
-
-Si en un futuro modificas alguno de los archivos (por ejemplo, `config`), toma en cuenta que el cambio sólo se verá reflejado en Windows, por lo que tendrías que copiar nuevamente el archivo actualizado, cambiando el asterisco * por el nombre del archivo a copiar en el sistema Ubuntu WSL. Por ejemplo, para `config`:
-
-```bash
-cp config ~/.ssh
-```
-
-Una vez hecho esto, debes moverte dentro de la terminal al directorio `~/.ssh` de Ubuntu, lo cual se hace con:
-
-```bash
-cd ~/.ssh
-```
-
-El paso anterior aplica tanto en Windows como en Linux, y a partir de aquí los pasos son aplicables en ambos sistemas, siempre y cuando la terminal esté abierta dentro de `~/.ssh` (lo cual aseguras ejecutando el paso anterior). Para que la conexión SSH funcione, se requiere que el archivo de clave privada sólo tenga permisos de acceso para el propietario del archivo. Para asegurar estos permisos, se debe ejecutar:
+Para que la conexión SSH funcione, se requiere que el archivo de clave privada sólo tenga permisos de acceso para el propietario del archivo. Para asegurar estos permisos, se debe ejecutar aún dentro del directorio `~/.ssh` (lo cual aseguras con un `cd ~/.ssh`):
 
 ```bash
 chmod 600 my_key1
 ```
 
-Ahora, debes abrir este repositorio en GitHub, ya sea desde la cuenta de LINX, o desde tu cuenta personal una vez que el dueño del repositorio (la cuenta de LINX) te haya dado los permisos para editarlo. Dentro del repositorio, ve a `Settings`, y luego en el menú del lado izquierdo ve a `Deploy Keys`. Dale a `Add deploy key`, y en el recuadro `Key` pega la clave que aparece dentro del archivo de llave pública `my_key1.pub` (puedes abrir el archivo con el Bloc de Notas, seleccionar todo `Ctrl+A` y luego copiar `Ctrl+C`). Bajo ninguna circunstancia debes pegar la clave privada que aparece en el archivo sin extensión `my_key1`. Finalmente, agrega algún título alusivo en el recuadro `Title` en GitHub y dale a guardar la llave.
+## Agregar la llave pública a GitHub
+
+Ahora, debes abrir tu repositorio de GitHub, o uno perteneciente a alguna organización (ejemplo, LINX) una vez que el dueño de ese repositorio te haya dado los permisos para editarlo. Dentro del repositorio, ve a `Settings`, y luego en el menú del lado izquierdo ve a `Deploy Keys`. Dale a `Add deploy key`, y en el recuadro `Key` pega la clave que aparece dentro del archivo de llave pública `my_key1.pub` (puedes abrir el archivo con el Bloc de Notas, seleccionar todo `Ctrl+A` y luego copiar `Ctrl+C`). Bajo ninguna circunstancia debes pegar la clave privada que aparece en el archivo sin extensión `my_key1`. Finalmente, agrega algún título alusivo en el recuadro `Title` en GitHub y dale a guardar la llave.
+
+## Inciar sesión con SSH
 
 Con las claves (pública y privada) y el archivo `config` en la carpeta correcta `~/.ssh`, y los permisos adecuados para la llave privada, ya se puede iniciar sesión mediane SSH:
 
 ```bash
-ssh -T -F ~/.ssh git@github-host1
+ssh -T -F ~/.ssh/config git@github-host1
 ```
 
-En donde el parámetro `-T` indica que la conexión se efectúa sin el modo de (pseudo)terminal activado, lo cual es necesario en GitHub ya que no vamos a usar comandos de Bash en el servidor remoto (GitHub); el parámetro `-F ~/.ssh` es opcional y sirve para indicar la ruta del archivo `config`, si se omite toma por defecto la ruta `~/.ssh` (aún así recomendamos usarlo en sistemas Windows con WSL, para evitar confusión entre el <b>.ssh</b> de Windows y el de Ubuntu), y finalmente se escribe el nombre de usuario `git` (para hacer push en Git siempre se debe usar este nombre) seguido de un arroba y el host que especificaste en el `config`. Posteriormente el programa te pedirá que ingreses la passphrase con la que creaste la llave asignada al host, y al ingresarla se iniciará la sesión. Si más de un usuario se requiere conectar a sus respectivos repositorios de GitHub en el mismo equipo, basta con repetir el comando anterior, pero cambiando el nombre del host (después del arroba) por el host asignado a ese repositorio. Por ello es importante el archivo `config` con distintos Hosts.
+En donde el parámetro `-T` indica que la conexión se efectúa sin el modo de (pseudo)terminal activado, lo cual es necesario en GitHub ya que no vamos a usar comandos de Bash en el servidor remoto (GitHub); el parámetro `-F ~/.ssh/config` es opcional y sirve para indicar la ruta del archivo `config`, si se omite toma por defecto la ruta `~/.ssh/config` (aún así recomendamos usarlo en sistemas Windows con WSL, para evitar confusión entre el sistema de archivos de Windows y el de Ubuntu), y finalmente se escribe el nombre de usuario `git` (para hacer push en Git siempre se usa este nombre) seguido de un arroba y el host que especificaste en `config`. Posteriormente el programa te pedirá que ingreses la passphrase con la que creaste la llave asignada al host, y al ingresarla se iniciará la sesión.
 
+## Conectando más de un usuario por computadora (opcional)
 
-<h2>Enlazando un repositorio a un Host</h2>
+Si más de un usuario se requiere conectar a sus respectivos repositorios de GitHub en el mismo equipo, basta con repetir el comando del punto anterior, pero cambiando el nombre del host (después del arroba) por el host asignado a ese repositorio. Por ello es importante el archivo `config` con distintos Hosts. Por ejemplo, para conectar un segundo usuario:
+
+```bash
+ssh -T -F ~/.ssh/config git@github-host2
+```
+
+Y el programa solicitará al usuario ingresar su passphrase para `my_key2`.
+
+## Enlazando un repositorio a un Host
 
 Los pasos anteriores sólo sirven para establecer la conexión desde el PC local a GitHub, pero ahora se debe enlazar el repositorio local con algún host en `config` (por ejemplo, `github-host1`). Para ello, se abre la carpeta oculta `.git` del repositorio local (esta carpeta se crea automáticamente al ejecutar `git init`), y luego se abre el archivo `config` de ese Git (no confundir con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto:
 
