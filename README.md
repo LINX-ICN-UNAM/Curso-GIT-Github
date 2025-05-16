@@ -273,7 +273,7 @@ Al revisar de nuva cuenta con [git status](#git-status) podremos ver lo siguient
 
 # Conexión de Git y GitHub
 
-A partir de este punto se aconseja instalar WSL si estás en Windows para ejecutar comandos de Ubuntu en terminal. Por tanto, la gran parte de los pasos es la misma en Linux (distribuciones basadas en Debian como Ubuntu o Mint), y Windows con WSL. En ambos casos se usará la terminal, cuidando que la terminal en Windows sea la de WSL Ubuntu y no el Powershell nativo de Windows.
+En este punto se recomienda instalar WSL si estás en Windows para ejecutar comandos de Ubuntu en terminal, aunque no es obligatorio. Por tanto, la gran parte de los pasos es la misma en Linux (distribuciones basadas en Debian como Ubuntu o Mint), y Windows con WSL. Si se usa Windows nativo (sin WSL), los siguientes comandos se deberán ejecutar desde Powershell, y comúnmente la diferencia entre un comando en Linux y en Powershell será la terminación <b>.exe</b> de ejecutable (ejemplo, `ssh` en Linux/WSL, y `ssh.exe` en Powershell). En ambos SOs usaremos la terminal, ya sea la de Linux, el WSL, o el Powershell de Windows.
 
 
 
