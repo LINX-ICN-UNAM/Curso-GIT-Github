@@ -1,3 +1,16 @@
+# INDICE
+**Conexión a Github**
+- [Conexión de Git y GitHub](#conexión-de-git-y-github)
+  - [Creando un directorio para SSH](#creando-un-directorio-para-ssh)
+  - [Creación de la llave RSA](#creación-de-la-llave-rsa)
+  - [Configurando el Host](#configurando-el-host)
+  - [Conexión de más de un usuario en el mismo equipo](#conexion-de-mas-de-un-usuario-en-el-mismo-equipo)
+  - [Cambio de permisos](#cambio-de-permisos)
+  - [Agregar la llave pública a GitHub](#agregar-la-llave-publica-a-github)
+  - [Inciar sesión con SSH](#iniciar-sesion-con-ssh)
+  - [Conectando más de un usuario por computadora](#conectando-más-de-un-usuario-por-computadora)
+  - [Enlazando un repositorio a un Host](#enlazando-un-repositorio-a-un-host)
+
 # Conexión de Git y GitHub
 
 En este punto se recomienda instalar WSL si estás en Windows para ejecutar comandos de Ubuntu en terminal, aunque no es obligatorio. Por tanto, la gran parte de los pasos es la misma en Linux (distribuciones basadas en Debian como Ubuntu o Mint), y Windows con WSL. Si se usa Windows nativo (sin WSL), los siguientes comandos se deberán ejecutar desde Powershell, y comúnmente la diferencia entre un comando en Linux y en Powershell será la terminación <b>.exe</b> de ejecutable (ejemplo, `ssh` en Linux/WSL, y `ssh.exe` en Powershell). En ambos SOs usaremos la terminal, ya sea la de Linux, el WSL, o el Powershell de Windows.
