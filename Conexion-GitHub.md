@@ -1,5 +1,4 @@
 # INDICE
-**Conexión a Github**
 - [Conexión de Git y GitHub](#conexión-de-git-y-github)
   - [Creando un directorio para SSH](#creando-un-directorio-para-ssh)
   - [Creación de la llave RSA](#creación-de-la-llave-rsa)
