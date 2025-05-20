@@ -27,16 +27,16 @@ Repositorio de aprendizaje sobre GIT & Github.
 ---  
 
 **Conexión a Github**
-- [Conexión de Git y GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md)
-  - [Creando un directorio para SSH]([#creando-un-directorio-para-ssh](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#creando-un-directorio-para-ssh))
-  - [Creación de la llave RSA](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#creación-de-la-llave-rsa)
-  - [Configurando el Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#configurando-el-host)
-  - [Conexión de más de un usuario en el mismo equipo](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#conexion-de-mas-de-un-usuario-en-el-mismo-equipo)
-  - [Cambio de permisos](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#cambio-de-permisos)
-  - [Agregar la llave pública a GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#agregar-la-llave-publica-a-github)
-  - [Inciar sesión con SSH](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#iniciar-sesion-con-ssh)
-  - [Conectando más de un usuario por computadora](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#conectando-más-de-un-usuario-por-computadora)
-  - [Enlazando un repositorio a un Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-Github.md#enlazando-un-repositorio-a-un-host)
+- [Conexión de Git y GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-GitHub/blob/main/Conexion-Github.md)
+  - [Creando un directorio para SSH](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#creando-un-directorio-para-ssh)
+  - [Creación de la llave RSA](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#creación-de-la-llave-rsa)
+  - [Configurando el Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#configurando-el-host)
+  - [Conexión de más de un usuario en el mismo equipo](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#conexion-de-mas-de-un-usuario-en-el-mismo-equipo)
+  - [Cambio de permisos](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#cambio-de-permisos)
+  - [Agregar la llave pública a GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#agregar-la-llave-publica-a-github)
+  - [Inciar sesión con SSH](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#iniciar-sesion-con-ssh)
+  - [Conectando más de un usuario por computadora](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#conectando-más-de-un-usuario-por-computadora)
+  - [Enlazando un repositorio a un Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#enlazando-un-repositorio-a-un-host)
 
 ## recursos
 
