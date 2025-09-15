@@ -27,7 +27,7 @@ Repositorio de aprendizaje sobre GIT & Github.
 ---  
 
 **Conexión a Github**
-- [Conexión de Git y GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-GitHub/blob/main/Conexion-Github.md)
+- [Conexión de Git y GitHub](https://https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md)
   - [Creando un directorio para SSH](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#creando-un-directorio-para-ssh)
   - [Creación de la llave RSA](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#creación-de-la-llave-rsa)
   - [Configurando el Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#configurando-el-host)
