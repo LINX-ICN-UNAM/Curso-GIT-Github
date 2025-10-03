@@ -2,7 +2,7 @@
 # INDICE
 
 - [INDICE](#indice)
-- [Conexión de Git y GitHub](#conexión-de-git-y-github)
+- [Conexión SSH](#conexión-ssh)
   - [Creando un directorio para SSH](#creando-un-directorio-para-ssh)
   - [Creación de la llave RSA](#creación-de-la-llave-rsa)
   - [Configurando el Host](#configurando-el-host)
@@ -11,11 +11,16 @@
   - [Agregar la llave pública a GitHub](#agregar-la-llave-pública-a-github)
   - [Inciar sesión con SSH](#inciar-sesión-con-ssh)
   - [Conectando más de un usuario por computadora (opcional)](#conectando-más-de-un-usuario-por-computadora-opcional)
-  - [Enlazando un repositorio a un Host](#enlazando-un-repositorio-a-un-host)
+- [Enlace entre repositorios git y GitHub](#enlace-entre-repositorios-git-y-github)
+  - [Clonar un repositorio remoto](#clonar-un-repositorio-remoto)
+  - [Cargar un repositorio remoto](#cargar-un-repositorio-remoto)
+    - [Desde `init`](#desde-init)
+    - [Desde `clone`](#desde-clone)
+  - [Ramas](#ramas)
 
 
 
-# Conexión de Git y GitHub
+# Conexión SSH 
 
 En este punto se recomienda instalar WSL si estás en Windows para ejecutar comandos de Ubuntu en terminal, aunque no es obligatorio. Por tanto, la gran parte de los pasos es la misma en Linux (distribuciones basadas en Debian como Ubuntu o Mint), y Windows con WSL. Si se usa Windows nativo (sin WSL), los siguientes comandos se deberán ejecutar desde Powershell, y comúnmente la diferencia entre un comando en Linux y en Powershell será la terminación <b>.exe</b> de ejecutable (ejemplo, `ssh` en Linux/WSL, y `ssh.exe` en Powershell). En ambos SOs usaremos la terminal, ya sea la de Linux, el WSL, o el Powershell de Windows.
 
@@ -164,26 +169,127 @@ ssh -T -F ~/.ssh/config git@github-host2
 
 Y el programa solicitará al usuario ingresar su passphrase para `my_key2`. En Windows simplemente se agrega la terminación <b>.exe</b> al comando `ssh`, y se usa la ruta `"C:\Users\your_user\.ssh\config"` del `config` en Windows.
 
-## Enlazando un repositorio a un Host
 
-Los pasos anteriores sólo sirven para establecer la conexión desde el PC local a GitHub, pero ahora se debe enlazar el repositorio local con algún host en `config` (por ejemplo, `github-host1`). Para ello, se abre la carpeta oculta `.git` del repositorio local de tu proyecto (esta carpeta se crea automáticamente al ejecutar `git init` o `git clone`), y luego se abre el archivo `config` de ese Git (no confundir con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto, y edítala para que se vea como sigue:
+# Enlace entre repositorios git y GitHub 
 
-```text
-[remote "origin"]
-	url = github-host1:your_user/your_repo.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+## Clonar un repositorio remoto
+
+Para bajar un repositorio remoto para **colaborar** se debe bajar utilizando la conexión **SSH**. Para ello en el repositorio remoto se debe hacer lo siguiente:
+
+   1. En la ventana del repositorio, click en `code`
+   2. Se depliega la ventana **Local**, entrar a la pestaña `SSH`
+   3. Copiar en el portapapeles el link, ejemplo:
+
+      ```bash
+      git@github.com:LINX-ICN-UNAM/nombre-del-repositorio.git
+      ```
+
+<img src="img/git_clone.gif" alt="Consola Remota Password" />
+
+Para poder clonar desde nuestra organización se debe usar la [llave y contraseña](GitHub.md#inciar-sesión-con-ssh)
+ para **SSH** por lo que ya debe haber sido aprobada esa llave para utilizarla. Si aun no tienes aprobada tu llave o si desconoces del tema avisa a [Josué Rodríguez](https://github.com/alfjosue1997), [Fernando Caballero](https://github.com/Ferman333), o a [Addi Trejo](https://github.com/Additrejo).
+
+ Con el **link** utilizaras el comando `git clone` en la terminal, ya sea bash, wsl, git o powershell pero deberas cambiar `github.com` por el host que quieras utilizar, de lo contrario aparecerá un error. Eso es debido a que el Hostname ya no es `@github` sino que deberas usar alguno de los alias que usaste en el archivo *.ssh*, ejemplo:
+
+```bash
+git@github-host1:LINX-ICN-UNAM/nombre-del-repositorio.git
 ```
 
-En la línea de `url` se debe cambiar el `github-host1` por el nombre que asignaste a tu Host en SSH, y `your_user/your_repo.git` es el nombre del usuario propietario en GitHub seguido del nombre del repositorio donde estás trabajando. Tras esto, cualquier push que se haga mediante Git será enviado a GitHub mediante el host personalizado `github-host1` creado en pasos anteriores, el cual ya tiene asignada la misma llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys. Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta (es lo mismo en Windows que en Linux):
+<img src="img/git_clone_ssh1.jpg" alt="Consola Remota Password" />
+
+Con el host que ingresen les pedira la contraseña de la llave SSH asociada. Asi podrán clonar el repositorio remoto
+
+<img src="img/git_clone_ssh2.jpg" alt="Consola Remota Password" />
+
+Para poder bajar un repositorio remoto pero **sin colaborar** con el se puede hacer lo siguiente en la consola:
+
+```Bash
+git clone https://github.com/TU-USUARIO/TU-REPO.git
+```
+
+El problema es que no permitira subir archivos debido a que GitHub ya no permite usuario y contraseña en la conexión **HTTPS**.
+
+
+## Cargar un repositorio remoto
+
+Para cargar un repositorio a GitHub varia un poco si empezaste desde `git init` o desde `git clone`
+
+### Desde `init`
+
+Si comenzaste desde `git init`. Se abre la carpeta oculta `.git` del repositorio local de tu proyecto (esta carpeta se crea automáticamente al ejecutar `git init` o `git clone`), y luego se abre el archivo `config` de ese Git (NO CONFUNFIR con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto, y edítala para que se vea como sigue:
+
+```bash
+[remote "origin"]
+  url = github-host1:your_user/your_repo.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+```
+
+En la línea de `url` se debe cambiar el `github-host1` por el nombre que asignaste a tu Host en SSH, y `your_user/your_repo.git` es el nombre del usuario propietario en GitHub seguido del nombre del repositorio donde estás trabajando. 
+
+Tambien se puede hacer desde la terminal:
+```bash
+git remote add origin github-host1:your_user/your_repo.git
+```
+opcional: renombrar la rama principal a 'main'
+```bash
+git branch -M main 
+```
+
+Tras esto, cualquier push que se haga mediante Git será enviado a GitHub mediante el host personalizado `github-host1` creado en pasos anteriores, el cual ya tiene asignada la misma llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys. 
+
+Ahora, en GitHub **DEBES CREAR** un repositorio con el nombre de tu nuevo repositorio, de lo contrario git no sabrá adonde mandarlo.
+
+Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta (es lo mismo en Windows que en Linux):
 
 ```bash
 git push -u origin main
 ```
 
-Si creaste la llave RSA con una passphrase, cada vez que hagas push se te pedirá de nuevo. Esto agrega una capa de seguridad para que usuarios no autorizados con acceso al equipo no intenten mandar código hacia este repositorio, o simplemente que no lo manden aquí por error confundiéndolo con su repositorio (en caso de haber más de una persona usando GitHub en el mismo equipo). El nombre del remoto "origin" y la rama de trabajo actual (en este ejemplo "main") son recordados por Git, por lo que en los siguientes  <i>push</i> ya no es necesario especificarlos, y podrías ejecutar simplemente:
+Si creaste la llave RSA con una passphrase, cada vez que hagas push se te pedirá de nuevo. Esto agrega una capa de seguridad para que usuarios no autorizados con acceso al equipo no intenten mandar código hacia este repositorio, o simplemente que no lo manden aquí por error confundiéndolo con su repositorio (en caso de haber más de una persona usando GitHub en el mismo equipo). 
+
+El nombre del remoto "origin" y la rama de trabajo actual (en este ejemplo "main") son recordados por Git, por lo que en los siguientes  <i>push</i> ya no es necesario especificarlos, y podrías ejecutar simplemente:
 
 ```bash
 git push
 ```
 
 Aunque la passphrase te la pedirá siempre.
+
+### Desde `clone`
+
+Si comenzaste desde `git clone`. Lo mas probable es que tu archivo `config` ya las configuraciones hechas por defecto, por lo que para cargar una modificación al repositorio puedes hacer 
+
+```bash
+git push
+```
+Si no funciono, probablemente tengas que configurar el repositorio remoto `origin`:
+
+```bash
+git remote set-url origin git@github-host:usuario/nuevo-repo.git
+```
+
+## Ramas
+
+Si quieres subir una nueva rama:
+
+```bash
+git push -u origin nueva-rama
+```
+O borrar una nueva rama:
+
+```bash
+git push origin --delete nombre-rama
+```
+Para poder revisar el estado de las ramas se puede utilizar `--prune` para purgar las ramas borradas del repositorio remoto y que no aparezcan al hacer `git status`
+```bash
+git fetch --prune
+```
+
+Luego, para ver todas las ramas:
+```bash
+git branch -ar
+```
+
+
+
+
