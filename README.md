@@ -1,69 +1,62 @@
-# GIT & Github Course (Windows)
-Repositorio de aprendizaje sobre GIT & Github.
+# Git / GitHub
+
+Repositorio de aprendizaje sobre Git & Github.
 
 
-## 📑 Índice
-
-**Instalación y configuración**
+- [Git / GitHub](#git--github)
 - [Recursos](#recursos)
 - [Downloads](#downloads)
 - [Instalacion GIT](#instalacion-git)
-   - [Instalación por descarga de archivo](#instalación-por-descarga-de-archivo)
-   - [Instalación en consola](#instalación-en-consola)
-   - [Comprobar instalación de GIT](#comprobar-instalación-de-git)
-- [Comandos básicos](#comandos-básicos)
-   - [git --version](#git---version)
-   - [git -help](#git---help)
-- [Comandos básicos en la Terminal Linux, CMD, PowerShell, Git Bash](#comandos-básicos-en-la-terminal-linux-cmd-powershell-git-bash)
+  - [1. Instalación por descarga de archivo.](#1-instalación-por-descarga-de-archivo)
+  - [2. Instalación en consola](#2-instalación-en-consola)
+  - [Comprobar instalación de git](#comprobar-instalación-de-git)
+- [Comandos básicos.](#comandos-básicos)
+  - [*git --version*](#git---version)
+  - [*git --help*](#git---help)
+  - [Comandos básicos en la Terminal Linux, CMD, PowerShell, Git Bash.](#comandos-básicos-en-la-terminal-linux-cmd-powershell-git-bash)
+    - [💡 Recomendaciones](#-recomendaciones)
 - [Configuración de GIT](#configuración-de-git)
-   - [Configuración Global (Nombre de usuario, Email)](#configuración-global)
-- [git init](#git-init)
-- [Ramas en git (Branches)](#ramas-en-git)
-   - [Git status](#git-status)
-- [Git add y commit](#git-add-y-commit)
-   - [Git add](#git-add)
-   - [Git commit](#git-commit)
-- [Git log y git status](#git-log-y-git-status)
----  
+  - [Configuración global.](#configuración-global)
+  - [git init](#git-init)
+  - [Ramas en GIT](#ramas-en-git)
+  - [Comandos basicos de git](#comandos-basicos-de-git)
+    - [Git status](#git-status)
+    - [Git add](#git-add)
+    - [Git commit](#git-commit)
+    - [git log](#git-log)
+- [Conexión a Github](#conexión-a-github)
+  - [Clonar un repositorio remoto](#clonar-un-repositorio-remoto)
 
-**Conexión a Github**
-- [Conexión de Git y GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md)
-  - [Creando un directorio para SSH](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#creando-un-directorio-para-ssh)
-  - [Creación de la llave RSA](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#creación-de-la-llave-rsa)
-  - [Configurando el Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#configurando-el-host)
-  - [Conexión de más de un usuario en el mismo equipo](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#conexion-de-mas-de-un-usuario-en-el-mismo-equipo)
-  - [Cambio de permisos](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#cambio-de-permisos)
-  - [Agregar la llave pública a GitHub](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#agregar-la-llave-publica-a-github)
-  - [Inciar sesión con SSH](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#iniciar-sesion-con-ssh)
-  - [Conectando más de un usuario por computadora](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#conectando-más-de-un-usuario-por-computadora)
-  - [Enlazando un repositorio a un Host](https://github.com/LINX-ICN-UNAM/Curso-GIT-Github/blob/main/Conexion-GitHub.md#enlazando-un-repositorio-a-un-host)
 
-## recursos
+
+# Recursos
 
 * [Git Website](https://git-scm.com/) - Website Git, Download.
 * [Git Book](https://git-scm.com/book/en/v2) - Git Book.
 * [Git Documentation](https://git-scm.com/doc) - Git Documentation.
 
----
 
-## downloads
+
+# Downloads
 
  * [Windows](https://git-scm.com/downloads/win)
  * [Linux](https://git-scm.com/downloads/linux)
  * [macOS](https://git-scm.com/downloads/mac)
 
----
 
-## Instalacion GIT  
-La instalación puede hacer de dos formas.
-1. Instalador por descarga de archivo.
-2. Comando en la terminal.
 
-## Instalación por descarga de archivo.
-* Descargando el archivo y ejecutandolo con doble click.
+# Instalacion GIT  
 
-## Instalación en consola
-* Agregar en el simbolo del sistema de nuestro ordenador el siguiente comando. 
+La instalación puede hacer de dos formas:
+
+## 1. Instalación por descarga de archivo.
+
+Descargando el archivo y ejecutandolo con doble click.
+
+
+## 2. Instalación en consola
+
+Agregar en el simbolo del sistema de nuestro ordenador el siguiente comando. 
 
 ```bash
 winget install --id Git.Git -e --source winget
@@ -78,36 +71,50 @@ Finalizará la instalación.
 ![image](https://github.com/user-attachments/assets/49d690ab-36e2-4bdb-8063-33f9cfa1084a)
 
 ## Comprobar instalación de git
+
 Ingresar el siguiente comando en la terminal
+
 ```bash
 git
 ```
+
 Saldrá lo siguiente junto con algunos comandos:  
 
 ![image](https://github.com/user-attachments/assets/6e09e8ce-bb90-407e-981a-1da6f35cf583)
 
 ---
 
-## Comandos básicos.  
+# Comandos básicos.
+
 Estos son algunos comandos en terminal básicos para cualquiere terminal compatible con GIT.
 
 
-### *git --version*  
+## *git --version*  
+
 _Este comando sirve para la ver la versión que tenemos instalada en nuestra PC._
+
 ```bash
+
 git --version
 ```  
+
 También podemos usar un comando más simple.
+
 ```bash  
 git -v
 ```
+
 ![image](https://github.com/user-attachments/assets/182253f9-a29d-4843-a489-fe970eca827d)
 
-### *git --help* 
+## *git --help* 
+
 _Este comando sirve para visualizar todos los comandos y su descripción disponibles en GIT._
+
 ```bash  
+
 git --help
 ```
+
 ![image](https://github.com/user-attachments/assets/43ef83a5-0011-40a6-b2f4-adbce88c7654)
 
 ## Comandos básicos en la Terminal Linux, CMD, PowerShell, Git Bash.
@@ -126,7 +133,7 @@ Esta es una tabla con los comandos equivalentes entre (Linux, CMD, PowerShell, G
 | Mover o renombrar un archivo   | `mv a.txt b.txt`  | `move a.txt b.txt`| `Move-Item a.txt b.txt` | `mv a.txt b.txt`   |
 | **Crear una carpeta**          | `mkdir nueva_carpeta` | `mkdir nueva_carpeta`   | `mkdir nueva_carpeta` o `New-Item -Type Directory -Name nueva_carpeta` | `mkdir nueva_carpeta` |
 
-#### 💡 Recomendaciones
+### 💡 Recomendaciones
 
 - **Git Bash** es ideal si vienes de Linux o estás usando Git en Windows.
 - **PowerShell** es más potente que CMD y permite scripts avanzados.
@@ -134,34 +141,39 @@ Esta es una tabla con los comandos equivalentes entre (Linux, CMD, PowerShell, G
 
 ---
 
-## Configuración de GIT
-### Configuración global. 
+# Configuración de GIT
+
+## Configuración global. 
+
    Esta configuración afectará a nivel usuario en la pc en la que nos encontremos.
+
    * **Nombre de usuario:**  
+  
      Estableceremos un nombre de usuario para GIT a nivel global en nuestra PC. 
 
-```bash  
-git config --global user.name "[tu_usuario]"
-```
-En la carpeta de usuario de nuestra PC creará el siguiente archivo.  
+      ```bash  
+      git config --global user.name "[tu_usuario]"
+      ```
+      En la carpeta de usuario de nuestra PC creará el siguiente archivo.  
 
-![image](https://github.com/user-attachments/assets/432e49f3-cea5-4341-b022-d6f78de38fca)  
+      ![image](https://github.com/user-attachments/assets/432e49f3-cea5-4341-b022-d6f78de38fca)  
 
-Al abrirlo con un block de notas nos mostrará lo siguiente:  
+      Al abrirlo con un block de notas nos mostrará lo siguiente:  
 
-![image](https://github.com/user-attachments/assets/79e75383-e181-4d38-9f29-4fa005e50599)
+      ![image](https://github.com/user-attachments/assets/79e75383-e181-4d38-9f29-4fa005e50599)
 
    * **Email de usuario**  
+  
      Estableceremos un Email de usuario para nuestra PC.
 
-```bash  
-git config --global user.email "[tu_email]"
-```
-Al abrir el archivo de nuevo aparecerán nuestras credenciales de usuario.  
+      ```bash  
+      git config --global user.email "[tu_email]"
+      ```
+      Al abrir el archivo de nuevo aparecerán nuestras credenciales de usuario.  
 
-![image](https://github.com/user-attachments/assets/1681ea38-b15a-4d77-8f1e-d80724ae99b6)
+      ![image](https://github.com/user-attachments/assets/1681ea38-b15a-4d77-8f1e-d80724ae99b6)
 
-Con esto tendremos las configuraciones necesarias para usar GIT.
+      Con esto tendremos las configuraciones necesarias para usar GIT.
 
 ---
 
@@ -194,6 +206,8 @@ git branch -m main
 Aparentemente no aparece un cambio pero el nombre de la rama se actualizó a main.  
 ![image](https://github.com/user-attachments/assets/1af0e088-8a30-4e4b-a1fb-fd5c6fc15b70)
 
+## Comandos basicos de git
+
 ### Git status
 Para saber si estoy en la rama principal agregar el siguiente comando:  
 ```bash  
@@ -204,14 +218,12 @@ Aparece la leyenda "On branch main" lo cual nos indica que estamos en la rama pr
 
 ---
 
-## git add y commit  
+### Git add
 Para iniciar debemos ver el estado de nuestro proyecto agregado el siguiente comando:
 ```bash  
 git status
 ```
 ![image](https://github.com/user-attachments/assets/6f73c98f-fc47-45fa-be66-cfd11daf3494)  
-
-### Git add
 
 Veremos que estamos en la rama principal y tenemos un archivo de prueba marcado en rojo.
 Al momento ese archivo aun no está agregado a GIT, así que lo agregaremos con el comando:  
@@ -264,10 +276,58 @@ Al revisar de nuva cuenta con [git status](#git-status) podremos ver lo siguient
 
 ![image](https://github.com/user-attachments/assets/451b3fd4-30fc-4e43-ba3d-4d890f3f2d26)
 
----
+### git log
 
-## git log y git status
+# Conexión a Github 
 
+**GitHub** es un servicio en la nube que permite **almacenar, gestionar y colaborar en proyectos de software** usando **Git** como sistema de control de versiones.
 
+- Funciona como un **repositorio remoto** en la nube.  
+- Permite **trabajo colaborativo** en proyectos de cualquier tamaño.  
+- Soporta varias herramientas de gestión:  
+  - **Issues** (seguimiento de tareas/bugs).  
+  - **Pull requests** (propuestas de cambios).  
+  - **Revisión de código**.  
+  - **Automatización** con GitHub Actions.  
+  - **Documentación** con Wikis y Markdown.  
+- Es usado en proyectos de **código abierto** y en **empresas**.  
+  
+Se sugiere leer primero la parte de [**Conexion GitHub**](Conexion-GitHub.md) para poder configurar la conexión SSH entre la computadora local y el servidor remoto. Esto ya que GitHub no permite el uso de tu usuario y contraseña para poder conectarse utilizando la terminal.
 
----
+## Clonar un repositorio remoto
+
+Para bajar un repositorio remoto para **colaborar** se debe bajar utilizando la conexión **SSH**. Para ello en el repositorio remoto se debe hacer lo siguiente:
+
+   1. En la ventana del repositorio, click en `code`
+   2. Se depliega la ventana **Local**, entrar a la pestaña `SSH`
+   3. Copiar en el portapapeles el link, ejemplo:
+
+      ```bash
+      git@github.com:LINX-ICN-UNAM/nombre-del-repositorio.git
+      ```
+
+<img src="img/git_clone.gif" alt="Consola Remota Password" />
+
+Para poder clonar desde nuestra organización se debe usar la [llave y contraseña](Conexion-GitHub.md#conexión-de-git-y-github#inciar-sesión-con-ssh)
+ para **SSH** por lo que ya debe haber sido aprobada esa llave para utilizarla. Si aun no tienes aprobada tu llave o si desconoces del tema avisa a [Josué Rodríguez](https://github.com/alfjosue1997), [Fernando Caballero](https://github.com/Ferman333), o a [Addi Trejo](https://github.com/Additrejo).
+
+ Con el **link** utilizaras el comando `git clone` en la terminal, ya sea bash, wsl, git o powershell pero deberas cambiar `github.com` por el host que quieras utilizar, de lo contrario aparecerá un error. Eso es debido a que el Hostname ya no es `@github` sino que deberas usar alguno de los alias que usaste en el archivo *.ssh*, ejemplo:
+
+```bash
+git@github-host1:LINX-ICN-UNAM/nombre-del-repositorio.git
+```
+
+<img src="img/git_clone_ssh1.jpg" alt="Consola Remota Password" />
+
+Con el host que ingresen les pedira la contraseña de la llave SSH asociada. Asi podrán clonar el repositorio remoto
+
+<img src="img/git_clone_ssh2.jpg" alt="Consola Remota Password" />
+
+Para poder bajar un repositorio remoto pero **sin colaborar** con el se puede hacer lo siguiente en la consola:
+
+```Bash
+git clone https://github.com/TU-USUARIO/TU-REPO.git
+```
+
+El problema es que no permitira subir archivos debido a que GitHub ya no permite usuario y contraseña en la conexión **HTTPS**.
+

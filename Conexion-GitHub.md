@@ -1,14 +1,19 @@
+
 # INDICE
+
+- [INDICE](#indice)
 - [Conexión de Git y GitHub](#conexión-de-git-y-github)
   - [Creando un directorio para SSH](#creando-un-directorio-para-ssh)
   - [Creación de la llave RSA](#creación-de-la-llave-rsa)
   - [Configurando el Host](#configurando-el-host)
-  - [Conexión de más de un usuario en el mismo equipo](#conexion-de-mas-de-un-usuario-en-el-mismo-equipo)
+  - [Conexión de más de un usuario en el mismo equipo (opcional)](#conexión-de-más-de-un-usuario-en-el-mismo-equipo-opcional)
   - [Cambio de permisos](#cambio-de-permisos)
-  - [Agregar la llave pública a GitHub](#agregar-la-llave-publica-a-github)
-  - [Inciar sesión con SSH](#iniciar-sesion-con-ssh)
-  - [Conectando más de un usuario por computadora](#conectando-más-de-un-usuario-por-computadora)
+  - [Agregar la llave pública a GitHub](#agregar-la-llave-pública-a-github)
+  - [Inciar sesión con SSH](#inciar-sesión-con-ssh)
+  - [Conectando más de un usuario por computadora (opcional)](#conectando-más-de-un-usuario-por-computadora-opcional)
   - [Enlazando un repositorio a un Host](#enlazando-un-repositorio-a-un-host)
+
+
 
 # Conexión de Git y GitHub
 
