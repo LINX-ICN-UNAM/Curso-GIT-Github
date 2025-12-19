@@ -249,7 +249,9 @@ Para cargar un repositorio a GitHub varia un poco si empezaste desde `git init` 
 
 ### Desde `init`
 
-Si comenzaste desde `git init`. Se abre la carpeta oculta `.git` del repositorio local de tu proyecto (esta carpeta se crea automáticamente al ejecutar `git init` o `git clone`), y luego se abre el archivo `config` de ese Git (NO CONFUNFIR con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto, y edítala para que se vea como sigue:
+Si comenzaste desde `git init`, en GitHub **DEBES CREAR** un repositorio con el nombre de tu nuevo repositorio, de lo contrario git no sabrá adonde mandarlo.
+
+Se abre la carpeta oculta `.git` del repositorio local de tu proyecto (esta carpeta se crea automáticamente al ejecutar `git init` o `git clone`), y luego se abre el archivo `config` de ese Git (NO CONFUNFIR con el `config` de <b>.ssh</b>). Ahora, se debe buscar la sección que contiene los datos del repositorio remoto, y edítala para que se vea como sigue:
 
 ```bash
 [remote "origin"]
@@ -269,8 +271,6 @@ git branch -M main
 ```
 
 Tras esto, cualquier push que se haga mediante Git será enviado a GitHub mediante el host personalizado `github-host1` creado en pasos anteriores, el cual ya tiene asignada la misma llave de acceso que cargaste en el repositorio remoto GitHub con DeployKeys. 
-
-Ahora, en GitHub **DEBES CREAR** un repositorio con el nombre de tu nuevo repositorio, de lo contrario git no sabrá adonde mandarlo.
 
 Ahora, ya se puede ejecutar el primer push, sólo ve a la carpeta del proyecto donde inicializaste Git, abre una terminal ahí mismo y ejecuta (es lo mismo en Windows que en Linux):
 
